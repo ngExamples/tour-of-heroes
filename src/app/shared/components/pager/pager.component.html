@@ -1,0 +1,21 @@
+<ul class="pagination justify-content-center">
+    <li class="page-item">
+        <button type="button" class="btn page-link zmdi zmdi-fast-rewind"
+            [disabled]="current == 1? 'disabled': ''"
+            [class.btn-disabled] = "current == 1"
+            (click)="current = current - 1">
+        </button>
+    </li>
+
+    <li class="page-item" [class.active]="value == current" *ngFor="let value of getRange()">
+        <button type="button" class="page-link" (click)="current = value">{{value}}</button>
+    </li>
+
+    <li class="page-item">
+        <button type="button" class="btn page-link zmdi zmdi-fast-forward"
+            [disabled]="current == total? 'disabled': ''"
+            [class.btn-disabled] = "current == total"
+            (click)="current = current + 1">
+        </button>
+    </li>
+</ul>

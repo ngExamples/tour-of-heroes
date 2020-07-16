@@ -1,0 +1,22 @@
+<h1>Superheros</h1>
+
+<pager [total]="page.totalPages" [current]="page.currentPage" (pageChanged)="nextPage($event)"></pager>
+
+<div class="row" style="width: 100%;">
+    <div class="col-sm-1" *ngFor="let hero of page.items">
+        <hero-card [hero]="hero" (onDelete)="selectHero(hero, card)" data-toggle="modal" data-target="#deleteHero"></hero-card>
+        <div class="sep"></div>
+    </div>
+</div>
+
+<div class="modal" tabindex="-1" role="dialog" id="deleteHero">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body">Are your sure?</div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-dismiss="modal">No</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="deleteSelectedHero()">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>

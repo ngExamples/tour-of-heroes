@@ -1,0 +1,9 @@
+<div class="card">
+    <input type="hidden" value="{{hero.heroName == ''? hero.realName: hero.heroName}}" #name>
+    <img [src]="hero.imgaeUrl" class="card-img-top" [title]="name.value">
+    <div class="card-body">
+        <h6 class="card-title">{{name.value}}</h6>
+        <button type="button" class="btn zmdi zmdi-edit" (click)="onEdit.emit()"></button>
+        <button type="button" class="btn zmdi zmdi-delete" (click)="onDelete.emit()"></button>
+    </div>
+</div>
