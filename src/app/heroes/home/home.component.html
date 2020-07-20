@@ -1,10 +1,10 @@
 <h1>Superheros</h1>
 
-<pager [total]="page.totalPages" [current]="page.currentPage" (pageChanged)="nextPage($event)"></pager>
-
-<div class="row" style="width: 100%;">
+<div class="row justify-content-center" style="width: 100%;">
     <button class="btn btn-success" (click)="onCreateHero()">Create Hero</button>
 </div>
+<div class="sep"></div>
+<pager [total]="page.totalPages" [current]="page.currentPage" (pageChanged)="nextPage($event)"></pager>
 
 <div class="row" style="width: 100%;">
     <div class="col-sm-1" *ngFor="let hero of page.items">
