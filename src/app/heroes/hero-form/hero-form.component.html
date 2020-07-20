@@ -1,0 +1,78 @@
+<h6 *ngIf="isNew">New Hero</h6>
+<h6 *ngIf="!isNew">Edit Hero [{{hero.id}}]</h6>
+<br>
+
+<form [formGroup]="form" (submit)="save()">
+    <div class="form-group row">
+        <label for="gender" class="col-sm-2 col-form-label col-form-label-sm">Gender</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control form-control-sm" id="gender" formControlName="gender" [required]="true">
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label for="title" class="col-sm-2 col-form-label col-form-label-sm">Title</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control form-control-sm" id="title" formControlName="heroName" [required]="true">
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label for="hName" class="col-sm-2 col-form-label col-form-label-sm">Name</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control form-control-sm" id="hName" formControlName="realName">
+        </div>
+    </div>
+
+    <fieldset formGroupName="powers">
+        <div class="form-group row">
+            <label for="intelligence" class="col-sm-2 col-form-label col-form-label-sm">Intelligence</label>
+            <div class="col-sm-10">
+                <input type="range" class="form-control form-control-sm" id="intelligence" formControlName="intelligence" min="0" max="100" [bubble]="itBuble">
+                <output class="bubble" #itBuble></output>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="strength" class="col-sm-2 col-form-label col-form-label-sm">Strength</label>
+            <div class="col-sm-10">
+                <input type="range" class="form-control form-control-sm" id="strength" formControlName="strength" min="0" max="100" [bubble]="strBuble">
+                <output class="bubble" #strBuble></output>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="speed" class="col-sm-2 col-form-label col-form-label-sm">Speed</label>
+            <div class="col-sm-10">
+                <input type="range" class="form-control form-control-sm" id="speed" formControlName="speed" min="0" max="100" [bubble]="spBuble">
+                <output class="bubble" #spBuble></output>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="durability" class="col-sm-2 col-form-label col-form-label-sm">Durability</label>
+            <div class="col-sm-10">
+                <input type="range" class="form-control form-control-sm" id="durability" formControlName="durability" min="0" max="100" [bubble]="durBuble">
+                <output class="bubble" #durBuble></output>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="power" class="col-sm-2 col-form-label col-form-label-sm">Power</label>
+            <div class="col-sm-10">
+                <input type="range" class="form-control form-control-sm" id="power" formControlName="power" min="0" max="100" [bubble]="pwrBuble">
+                <output class="bubble" #pwrBuble></output>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="combat" class="col-sm-2 col-form-label col-form-label-sm">Combat</label>
+            <div class="col-sm-10">
+                <input type="range" class="form-control form-control-sm" id="combat" formControlName="combat" min="0" max="100" [bubble]="cbtBuble">
+                <output class="bubble" #cbtBuble></output>
+            </div>
+        </div>
+    </fieldset>
+
+    <input type="submit" class="btn btn-success" value="Save">
+</form>

@@ -28,7 +28,7 @@ export interface HeroStateContext {
         items: [],
         isLoading: false,
         isSaving: false,
-        selectedHero: null,
+        selectedHero: Hero.new(),
         totalPages: 1,
         currentPage: 1,
         pageSize: 10
@@ -92,7 +92,7 @@ export class HeroState {
             ctx.patchState({
                 items: data,
                 isLoading: false,
-                selectedHero: null
+                selectedHero: Hero.new()
             });
         });
     }
@@ -111,7 +111,7 @@ export class HeroState {
         this.api.getPage(action.pageNumber, action.pageSize).subscribe(data => {
             ctx.patchState({
                 isLoading: false,
-                selectedHero: null,
+                selectedHero: Hero.new(),
                 items: data.items,
                 currentPage: data.currentPage,
                 totalPages: data.totalPages,
@@ -135,7 +135,7 @@ export class HeroState {
 
         ctx.patchState({
             isLoading: false,
-            selectedHero: null
+            selectedHero: Hero.new()
         });
 
         if (hero != null)
@@ -162,15 +162,19 @@ export class HeroState {
      */
     @Action(CreateHero)
     CreateHero(ctx: StateContext<HeroStateContext>, action: CreateHero) {
+        const state = ctx.getState();
+
         ctx.patchState({
             isSaving: true
         });
 
-        let hero = this.api.new(action.hero);
+        this.api.new(action.hero);
 
         ctx.patchState({
             isSaving: false
         });
+
+        ctx.dispatch(new GetHeroesPage(state.currentPage, state.pageSize));
     }
 
     /**
@@ -180,6 +184,8 @@ export class HeroState {
      */
     @Action(EditHero)
     EditHero(ctx: StateContext<HeroStateContext>, action: EditHero) {
+        const state = ctx.getState();
+
         ctx.patchState({
             isSaving: true
         });
@@ -189,6 +195,8 @@ export class HeroState {
         ctx.patchState({
             isSaving: false
         });
+
+        ctx.dispatch(new GetHeroesPage(state.currentPage, state.pageSize));
     }
 
     /**
@@ -198,7 +206,7 @@ export class HeroState {
      */
     @Action(DeleteHero)
     DeleteHero(ctx: StateContext<HeroStateContext>, action: DeleteHero) {
-        let state = ctx.getState();
+        const state = ctx.getState();
 
         ctx.patchState({
             isLoading: true

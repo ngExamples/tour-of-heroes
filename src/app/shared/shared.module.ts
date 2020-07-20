@@ -1,16 +1,17 @@
 import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
 import { COMPONENTS } from './export.components'
+import { DIRECTIVES } from './export.directives'
 
 @NgModule({
     imports: [
         CommonModule
     ],
     declarations: [
-        ...COMPONENTS
+        ...COMPONENTS, ...DIRECTIVES
     ],
     exports: [
-        ...COMPONENTS
+        ...COMPONENTS, ...DIRECTIVES
     ]
 })
 export class SharedModule { }

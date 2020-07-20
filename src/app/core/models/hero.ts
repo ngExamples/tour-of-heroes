@@ -34,7 +34,7 @@ export class Hero {
      * @param hero hero to copy
      * @returns a copy of input hero
      */
-    public static copy(hero: Hero) : Hero {
+    public static clone(hero: Hero) : Hero {
         if (hero == null)
             return null;
 
@@ -46,7 +46,7 @@ export class Hero {
      * @returns empty hero instance
      */
     public static new() : Hero {
-        return new Hero(0, '', '', '', '', {
+        return new Hero(-1, '', '', '', '', {
             intelligence: 0,
             strength: 0,
             speed: 0,

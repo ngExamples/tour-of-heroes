@@ -96,7 +96,7 @@ export class HeroService {
     public new(hero: Hero): Hero {
         let newHero = { ...hero };
         newHero.id = this.heroes[this.heroes.length - 1].id + 1;
-        this.heroes.push(newHero);
+        this.heroes = [...this.heroes, newHero];
         return newHero;
     }
 
@@ -109,13 +109,7 @@ export class HeroService {
         const index = this.heroes.findIndex(e => e.id == hero.id);
         if (index == -1) return;
 
-        let currentHero = this.heroes[index];
-
-        currentHero.gender = hero.gender;
-        currentHero.heroName = hero.heroName;
-        currentHero.realName = hero.realName;
-        currentHero.imgaeUrl = hero.imgaeUrl;
-        currentHero.powers = { ...hero.powers };
+        this.heroes[index] = hero;
     }
 
     /**
