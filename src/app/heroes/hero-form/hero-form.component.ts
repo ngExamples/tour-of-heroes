@@ -27,7 +27,7 @@ export class HeroFormComponent implements OnInit {
             gender: [],
             heroName: [],
             realName: [],
-            imgaeUrl: [],
+            imageUrl: [],
             powers: this.fb.group({
                 intelligence: [],
                 strength: [],
@@ -38,44 +38,23 @@ export class HeroFormComponent implements OnInit {
             })
         });
 
-        if (this.isNew)
-        {
-            this.hero = Hero.new();
-
+        this.store.select(HeroState.getSelectedHero).subscribe(e => {
+            this.hero = e;
             this.form.patchValue({
-                gender: '',
-                heroName: '',
-                realName: '',
+                gender: e.gender,
+                heroName: e.heroName,
+                realName: e.realName,
+                imageUrl: e.imageUrl,
                 powers : {
-                    intelligence: 0,
-                    strength: 0,
-                    speed: 0,
-                    durability: 0,
-                    power: 0,
-                    combat: 0
+                    intelligence: e.powers.intelligence,
+                    strength: e.powers.strength,
+                    speed: e.powers.speed,
+                    durability: e.powers.durability,
+                    power: e.powers.power,
+                    combat: e.powers.combat
                 }
             });
-        }
-        else
-        {
-            this.store.select(HeroState.getSelectedHero).subscribe(e => {
-                this.hero = e;
-
-                this.form.patchValue({
-                    gender: e.gender,
-                    heroName: e.heroName,
-                    realName: e.realName,
-                    powers : {
-                        intelligence: e.powers.intelligence,
-                        strength: e.powers.strength,
-                        speed: e.powers.speed,
-                        durability: e.powers.durability,
-                        power: e.powers.power,
-                        combat: e.powers.combat
-                    }
-                });
-            });
-        }
+        });
     }
 
     save() {
@@ -87,9 +66,10 @@ export class HeroFormComponent implements OnInit {
         if (this.form.valid) {
             const data = this.form.value;
 
+            hero.gender = data.gender;
             hero.heroName = data.heroName;
             hero.realName = data.realName;
-            hero.gender = data.gender;
+            hero.imageUrl = data.imageUrl;
             hero.powers.combat = data.powers.combat;
             hero.powers.durability = data.powers.durability
             hero.powers.intelligence = data.powers.intelligence;
@@ -99,7 +79,6 @@ export class HeroFormComponent implements OnInit {
         }
 
         if (hero.id == -1) {
-            hero.imgaeUrl = "https://i.pinimg.com/originals/e6/4c/2b/e64c2b2e68f177e7ac1122fdfb0f8150.jpg";
             this.store.dispatch(new CreateHero(hero));
         }
         else

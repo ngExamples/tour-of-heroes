@@ -24,52 +24,53 @@
         </div>
     </div>
 
+    <div class="form-group row">
+        <label for="imageUrl" class="col-sm-2 col-form-label col-form-label-sm">Image URL</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control form-control-sm" id="imageUrl" formControlName="imageUrl">
+        </div>
+    </div>
+
     <fieldset formGroupName="powers">
         <div class="form-group row">
             <label for="intelligence" class="col-sm-2 col-form-label col-form-label-sm">Intelligence</label>
             <div class="col-sm-10">
-                <input type="range" class="form-control form-control-sm" id="intelligence" formControlName="intelligence" min="0" max="100" [bubble]="itBuble">
-                <output class="bubble" #itBuble></output>
+                <input type="range" class="form-control form-control-sm" id="intelligence" formControlName="intelligence" min="0" max="100" withbubble>
             </div>
         </div>
 
         <div class="form-group row">
             <label for="strength" class="col-sm-2 col-form-label col-form-label-sm">Strength</label>
             <div class="col-sm-10">
-                <input type="range" class="form-control form-control-sm" id="strength" formControlName="strength" min="0" max="100" [bubble]="strBuble">
-                <output class="bubble" #strBuble></output>
+                <input type="range" class="form-control form-control-sm" id="strength" formControlName="strength" min="0" max="100" withbubble>
             </div>
         </div>
 
         <div class="form-group row">
             <label for="speed" class="col-sm-2 col-form-label col-form-label-sm">Speed</label>
             <div class="col-sm-10">
-                <input type="range" class="form-control form-control-sm" id="speed" formControlName="speed" min="0" max="100" [bubble]="spBuble">
-                <output class="bubble" #spBuble></output>
+                <input type="range" class="form-control form-control-sm" id="speed" formControlName="speed" min="0" max="100" withbubble>
             </div>
         </div>
 
         <div class="form-group row">
             <label for="durability" class="col-sm-2 col-form-label col-form-label-sm">Durability</label>
             <div class="col-sm-10">
-                <input type="range" class="form-control form-control-sm" id="durability" formControlName="durability" min="0" max="100" [bubble]="durBuble">
-                <output class="bubble" #durBuble></output>
+                <input type="range" class="form-control form-control-sm" id="durability" formControlName="durability" min="0" max="100" withbubble>
             </div>
         </div>
 
         <div class="form-group row">
             <label for="power" class="col-sm-2 col-form-label col-form-label-sm">Power</label>
             <div class="col-sm-10">
-                <input type="range" class="form-control form-control-sm" id="power" formControlName="power" min="0" max="100" [bubble]="pwrBuble">
-                <output class="bubble" #pwrBuble></output>
+                <input type="range" class="form-control form-control-sm" id="power" formControlName="power" min="0" max="100" withbubble>
             </div>
         </div>
 
         <div class="form-group row">
             <label for="combat" class="col-sm-2 col-form-label col-form-label-sm">Combat</label>
             <div class="col-sm-10">
-                <input type="range" class="form-control form-control-sm" id="combat" formControlName="combat" min="0" max="100" [bubble]="cbtBuble">
-                <output class="bubble" #cbtBuble></output>
+                <input type="range" class="form-control form-control-sm" id="combat" formControlName="combat" min="0" max="100" withbubble>
             </div>
         </div>
     </fieldset>

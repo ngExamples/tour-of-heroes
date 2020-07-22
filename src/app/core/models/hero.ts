@@ -9,7 +9,7 @@ export class Hero {
      * @param gender hero gender
      * @param heroName hero fame name
      * @param realName hero real name
-     * @param imgaeUrl hero image url
+     * @param imageUrl hero image url
      * @param powers hero power measures
      */
     constructor(
@@ -17,7 +17,7 @@ export class Hero {
         public gender: string,
         public heroName: string,
         public realName: string,
-        public imgaeUrl: string,
+        public imageUrl: string,
         public powers: {
             intelligence: number,
             strength: number,
@@ -38,7 +38,7 @@ export class Hero {
         if (hero == null)
             return null;
 
-        return new Hero(hero.id, hero.gender, hero.heroName, hero.realName, hero.imgaeUrl, {...hero.powers });
+        return new Hero(hero.id, hero.gender, hero.heroName, hero.realName, hero.imageUrl, {...hero.powers });
     }
 
     /**
@@ -46,7 +46,7 @@ export class Hero {
      * @returns empty hero instance
      */
     public static new() : Hero {
-        return new Hero(-1, '', '', '', '', {
+        return new Hero(-1, '', '', '', 'https://i.pinimg.com/originals/e6/4c/2b/e64c2b2e68f177e7ac1122fdfb0f8150.jpg', {
             intelligence: 0,
             strength: 0,
             speed: 0,

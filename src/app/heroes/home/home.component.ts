@@ -12,7 +12,7 @@ import { SelectHero } from 'app/core/states/hero-ui.actions';
 export class HomeComponent implements OnInit {
     page: {items: Hero[], totalPages: number, currentPage: number, pageSize: number};
     selectedHero: Hero;
-    isNew: boolean = false;
+    isNew: boolean = null;
 
     @ViewChild('deleteModel') deleteModel: ElementRef;
     @ViewChild('contentModel') contentModel: ElementRef;

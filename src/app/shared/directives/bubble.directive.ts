@@ -1,31 +1,35 @@
-import { Directive, ElementRef, HostListener, Input, OnInit } from "@angular/core"
+import { Directive, ElementRef, HostListener, OnInit } from "@angular/core"
 
 @Directive({
-    selector: '[bubble]'
+    selector: '[withbubble]'
 })
 export class BubbleDirective implements OnInit {
-    @Input('bubble') out: ElementRef;
+    outElement: HTMLOutputElement;
 
     constructor(private host: ElementRef) {
         this.host.nativeElement.classList.add("range");
         this.host.nativeElement.parentElement.classList.add("range-wrap");
+
+        this.outElement = document.createElement("output");
+        this.outElement.classList.add("bubble");
+        this.outElement.htmlFor.add(host.nativeElement.id);
+        host.nativeElement.parentElement.appendChild(this.outElement);
     }
 
     ngOnInit() {
-        //debugger;
+        this.onInputChange();
     }
 
     @HostListener("input")
     onInputChange() {
         let he = this.host.nativeElement;
-        let be = <any>this.out;
         let pw = he.parentElement.getBoundingClientRect().width;
 
         const val = he.value;
         const max = he.max ? he.max : 100;
         const newVal = Number(pw * (val / max));
 
-        be.innerHTML = val;
-        be.style.left = `calc(${newVal}px + (${25 - newVal * 0.15}px))`;
+        this.outElement.innerHTML = val;
+        this.outElement.style.left = `calc(${newVal}px + (${25 - newVal * 0.15}px))`;
     }
 }

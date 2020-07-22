@@ -25,12 +25,11 @@
 </div>
 
 <div class="modal" tabindex="-1" role="dialog" #contentModel>
-    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-dialog-centered" role="document" *ngIf="isNew != null">
         <div class="modal-content">
             <div class="modal-body">
-                <hero-form [isNew]="isNew" (onSave)="onSaveHero()"></hero-form>    
+                <hero-form [isNew]="isNew" (onSave)="onSaveHero()"></hero-form>
             </div>
-            
         </div>
     </div>
 </div>
